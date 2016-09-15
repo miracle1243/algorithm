@@ -37,8 +37,34 @@ int main(void) {
 	 * 4.分治算法思想例子
 	 */
 	//divide();
-	game_schedule();
+<<<<<<< HEAD
+	//game_schedule();
 
+	/**
+	 * 5.贪心算法思想例子
+	 */
+	//install_box();
+
+	/**
+	 * 6.试探法算法思想例子
+	 */
+	//eight_queen();
+	//lottery_combine();
+
+	/**
+	 * 7.动态规划算法思想例子
+	 */
+	//max_sequence();
+
+	/**
+	 * 8.迭代算法思想例子
+	 */
+	//square();
+
+	/**
+	 * 9.模拟算法思想例子
+	 */
+	guess_number();
 
 	return EXIT_SUCCESS;
 }

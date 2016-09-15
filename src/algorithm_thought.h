@@ -48,14 +48,60 @@ void game_schedule();
 void gamecal(int k, int n);
 
 //贪心算法思想
+<<<<<<< HEAD
+void install_box();
+
+#define N 6
+#define V 100
+
+typedef struct box {
+	int no;
+	int size;
+	struct box* next;
+} BOX;
+
+void init_list(BOX** H);
+
+BOX* find_p(BOX* H, int volume, int v);
+
+void add_list_tail(BOX* H, BOX* p);
+
+void print_list(BOX* H);
+
+int add_box(int volumn[], int v);
 
 //试探法算法思想
+void eight_queen();
+
+#define NN 8
+
+int place(int row, int col);
+
+void backtrack(int row);
+
+void queens();
+
+#define MAXNN 7
+#define NUMM 29
+
+void lottery_combine();
+
+void combine(int n, int m);
+
 
 //动态规划算法思想
+void max_sequence();
+
+#define MAXLEN 100
+
+void LCSLength(char *x, char *y, int m, int n, int c[][MAXLEN], int b[][MAXLEN]);
+
+void PrintLCS(int b[][MAXLEN], char *x, int i, int j);
 
 //迭代算法思想
+void square();
 
 //模拟算法思想
-
+void guess_number();
 
 #endif /* ALGORITHM_THOUGHT_H_ */

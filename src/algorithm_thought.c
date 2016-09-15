@@ -11,11 +11,15 @@
 #include <malloc.h>
 #include <stdlib.h>
 #include <string.h>
+#include <math.h>
+#include <time.h>
 #include "algorithm_thought.h"
 
 char *result = '\0';
 int pr = 1;
 int a[MAXN+1][MAXN+1] = {0};
+int solution[NN], sols;
+int num[NUM], lottery[MAXNN];
 
 /**
  * 百元买鸡
@@ -347,6 +351,255 @@ void gamecal(int k, int n) {
 		}
 	}
 }
+
+/**
+ *贪心算法——装箱问题
+ */
+void init_list(BOX** H) {
+	*H = (BOX*)malloc(sizeof(BOX));
+	(*H)->no = 0;
+	(*H)->size = 0;
+	(*H)->next = NULL;
+}
+
+BOX* find_p(BOX* H, int volume, int v) {
+	BOX* p = H->next;
+	while (p != NULL) {
+		if (p->size+volume <= v)
+			break;
+		p = p->next;
+	}
+
+	return p;
+}
+
+void add_list_tail(BOX* H, BOX* p) {
+	BOX* tmp = H->next;
+	BOX* q = H;
+
+	while (tmp != NULL) {
+		q = tmp;
+		tmp = tmp->next;
+	}
+
+	q->next = p;
+}
+
+void print_list(BOX* H) {
+	BOX* p = H->next;
+	while (p != NULL) {
+		printf("%d:%d\n", p->no, p->size);
+		p = p->next;
+	}
+}
+
+int add_box(int volumn[], int v) {
+	int count = 0;
+	int i;
+	BOX* H = NULL;
+
+	init_list(&H);
+
+	for (i=0; i<N; i++) {
+		BOX* p = find_p(H, volumn[i], v);
+		if (p == NULL) {
+			count++;
+			p = (BOX*)malloc(sizeof(BOX));
+			p->no = count;
+			p->size = volumn[i];
+			p->next = NULL;
+			add_list_tail(H, p);
+		} else {
+			p->size += volumn[i];
+		}
+	}
+
+	print_list(H);
+
+	return count;
+}
+
+void install_box() {
+	int ret;
+	int volumes[] = {60, 45, 35, 20, 20, 20};
+
+	ret = add_box(volumes, V);
+
+	printf("%d\n", ret);
+
+}
+
+/**
+ * 试探法算法——八皇后问题
+ */
+void eight_queen() {
+	queens();
+	printf("Total Solutions: %d\n", sols);
+}
+
+int place(int row, int col) {
+	int j;
+	for (j=0; j<row; j++) {
+		if (row-j == solution[row] - solution[j]
+				|| row+solution[row] == j+solution[j]
+				|| solution[j] == solution[row]) {
+			return 0;
+		}
+	}
+	return 1;
+}
+
+void backtrack(int row) {
+	int count=0;
+	int k;
+	count++;
+	if (NN == row) {
+		sols++;
+		for (k=0;k<NN;k++) {
+			printf("%d\t", solution[k]);
+		}
+		printf("\n\n");
+	} else {
+		int i;
+		for (i=0; i<NN; i++) {
+			solution[row] = i;
+			if (place(row, i)) {
+				backtrack(row+1);
+			}
+		}
+	}
+}
+
+void queens() {
+	backtrack(0);
+}
+
+void lottery_combine() {
+	int i;
+	for (i=0; i<NUMM; i++) {
+		num[i]=i+1;
+	}
+	for (i=0;i<MAXNN;i++) {
+		lottery[i] = 0;
+	}
+	combine(NUMM, MAXNN);
+}
+
+void combine(int n, int m) {
+	int i, j;
+	for (i=n; i>=m; i--) {
+		lottery[m-1] = num[i-1];
+		if (m>1) {
+			combine(i-1,m-1);
+		} else {
+			for (j=MAXNN-1; j>=0; j--) {
+				printf("%3d", lottery[j]);
+			}
+			printf("\n");
+		}
+	}
+}
+
+/**
+ * 动态规划算法——最长公共子序列
+ */
+void max_sequence() {
+	char x[MAXLEN] = {"ABCBDAB"};
+	char y[MAXLEN] = {"BDCABA"};
+	int b[MAXLEN][MAXLEN];
+	int c[MAXLEN][MAXLEN];
+	int m, n;
+
+	m = strlen(x);
+	n = strlen(y);
+
+	LCSLength(x, y, m, n, c, b);
+	PrintLCS(b, x, m, n);
+}
+
+void LCSLength(char *x, char *y, int m, int n, int c[][MAXLEN], int b[][MAXLEN]) {
+	int i, j;
+
+	for (i=0; i<=m; i++) {
+		c[i][0] = 0;
+	}
+	for (j=1; j<=n; j++) {
+		c[0][j] = 0;
+	}
+	for (i=1; i<=m; i++) {
+		for (j=1; j<=n; j++) {
+			if (x[i-1] == y[j-1]) {
+				c[i][j] = c[i][j-1] + 1;
+				b[i][j] = 0;
+			} else if (c[i-1][j] >= c[i][j-1]) {
+				c[i][j] = c[i-1][j];
+				b[i][j] = 1;
+			} else {
+				c[i][j] = c[i][j-1];
+				b[i][j] = -1;
+			}
+		}
+	}
+}
+
+void PrintLCS(int b[][MAXLEN], char *x, int i, int j) {
+	 if (i == 0 || j == 0) {
+		 return;
+	 }
+	 if (b[i][j] == 0) {
+		 PrintLCS(b, x, i-1, j-1);
+		 printf("%c ", x[i-1]);
+	 } else if (b[i][j] == 1) {
+		 PrintLCS(b, x, i-1, j);
+	 } else {
+		 PrintLCS(b, x, i, j-1);
+	 }
+}
+
+/**
+ * 迭代算法——求平方根
+ */
+void square() {
+	double a, x0, x1;
+	printf("Input a num: \n");
+	scanf("%lf", &a);
+	if (a<0) {\
+		printf("Error!\n");
+	} else {
+		x0 = a/2;
+		x1= (x0+a/x0)/2;
+		do {
+			x0 = x1;
+			x1 = (x0+a/x0)/2;
+		} while (fabs(x0-x1) >= 1e-6);
+	}
+	printf("Result:\n");
+	printf("sqrt(%g)=%g\n", a, x1);
+}
+
+/**
+ * 模拟算法——猜数
+ */
+void guess_number() {
+	int n, m, i=0;
+	srand(time(NULL));
+	n = rand() % 100 + 1;
+	do {
+		printf("输入所猜的数字：");
+		scanf("%d", &m);
+		i++;
+		if (m>n) {
+			printf("错误!所猜的数太大了!\n");
+		} else if (m<n) {
+			printf("错误!所猜的数太小了!\n");
+		}
+	} while (m!=n);
+
+	printf("答对了!\n");
+	printf("共猜测了%d次。\n", i);
+}
+
+
 
 
 
