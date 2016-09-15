@@ -599,10 +599,3 @@ void guess_number() {
 	printf("共猜测了%d次。\n", i);
 }
 
-
-
-
-
-
-
-

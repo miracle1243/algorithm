@@ -37,7 +37,6 @@ int main(void) {
 	 * 4.分治算法思想例子
 	 */
 	//divide();
-<<<<<<< HEAD
 	//game_schedule();
 
 	/**

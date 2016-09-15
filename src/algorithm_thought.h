@@ -104,4 +104,5 @@ void square();
 //模拟算法思想
 void guess_number();
 
+
 #endif /* ALGORITHM_THOUGHT_H_ */
