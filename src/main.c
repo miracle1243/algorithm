@@ -78,7 +78,12 @@ int main(void) {
 	/**
 	 * 循环队列例子
 	 */
-	CycQueueTest();
+	//CycQueueTest();
+
+	/**
+	 * 栈例子
+	 */
+	SeqStackTest();
 
 	return EXIT_SUCCESS;
 }
