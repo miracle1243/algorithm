@@ -88,7 +88,12 @@ int main(void) {
 	/**
 	 * 二叉树例子
 	 */
-	BinTreeTest();
+	//BinTreeTest();
+
+	/**
+	 * 线索二叉树例子
+	 */
+	ThreadBinTreeTest();
 
 	return EXIT_SUCCESS;
 }
