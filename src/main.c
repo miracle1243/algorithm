@@ -83,7 +83,12 @@ int main(void) {
 	/**
 	 * 栈例子
 	 */
-	SeqStackTest();
+	//SeqStackTest();
+
+	/**
+	 * 二叉树例子
+	 */
+	BinTreeTest();
 
 	return EXIT_SUCCESS;
 }
