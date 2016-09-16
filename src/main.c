@@ -93,7 +93,12 @@ int main(void) {
 	/**
 	 * 线索二叉树例子
 	 */
-	ThreadBinTreeTest();
+	//ThreadBinTreeTest();
+
+	/**
+	 * 赫夫曼树例子
+	 */
+	HuffmanTreeTest();
 
 	return EXIT_SUCCESS;
 }
