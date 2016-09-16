@@ -63,7 +63,12 @@ int main(void) {
 	/**
 	 * 9.模拟算法思想例子
 	 */
-	guess_number();
+	//guess_number();
+
+	/**
+	 *线性表例子
+	 */
+	SeqListTest();
 
 	return EXIT_SUCCESS;
 }

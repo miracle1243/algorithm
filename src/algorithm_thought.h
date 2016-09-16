@@ -48,7 +48,6 @@ void game_schedule();
 void gamecal(int k, int n);
 
 //贪心算法思想
-<<<<<<< HEAD
 void install_box();
 
 #define N 6
