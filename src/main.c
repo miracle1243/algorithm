@@ -68,7 +68,17 @@ int main(void) {
 	/**
 	 *线性表例子
 	 */
-	SeqListTest();
+	//SeqListTest();
+
+	/**
+	 * 链表例子
+	 */
+	//LinkedListTest();
+
+	/**
+	 * 循环队列例子
+	 */
+	CycQueueTest();
 
 	return EXIT_SUCCESS;
 }
