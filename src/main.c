@@ -118,7 +118,12 @@ int main(void) {
 	/**
 	 * 哈希查找例子
 	 */
-	HashSearchTest();
+	//HashSearchTest();
+
+	/**
+	 * 索引查找例子
+	 */
+	IndexSearchTest();
 
 	return EXIT_SUCCESS;
 }
