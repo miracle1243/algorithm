@@ -113,7 +113,12 @@ int main(void) {
 	/**
 	 * 二叉排序树查找
 	 */
-	BSTSearchTest();
+	//BSTSearchTest();
+
+	/**
+	 * 哈希查找例子
+	 */
+	HashSearchTest();
 
 	return EXIT_SUCCESS;
 }
