@@ -1,6 +1,6 @@
 /*
  ============================================================================
- Name        : seq_list.c
+ Name        : seq_list.h
  Author      : Yao
  Version     :
  Copyright   : Your copyright notice

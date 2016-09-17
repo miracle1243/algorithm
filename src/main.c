@@ -98,7 +98,22 @@ int main(void) {
 	/**
 	 * 赫夫曼树例子
 	 */
-	HuffmanTreeTest();
+	//HuffmanTreeTest();
+
+	/**
+	 * 顺序查找例子
+	 */
+	//SeqSearchTest();
+
+	/**
+	 * 折半查找例子
+	 */
+	//BinarySearchTest();
+
+	/**
+	 * 二叉排序树查找
+	 */
+	BSTSearchTest();
 
 	return EXIT_SUCCESS;
 }
