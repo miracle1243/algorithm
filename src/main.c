@@ -123,7 +123,12 @@ int main(void) {
 	/**
 	 * 索引查找例子
 	 */
-	IndexSearchTest();
+	//IndexSearchTest();
+
+	/**
+	 * 冒泡排序例子
+	 */
+	BubbleSortTest();
 
 	return EXIT_SUCCESS;
 }
