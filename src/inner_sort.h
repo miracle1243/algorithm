@@ -29,4 +29,11 @@ void ShellSort(int a[],int n);
 
 void ShellSortTest();
 
+int Division(int a[],int left, int right);
+
+void QuickSort(int a[],int left,int right);
+
+void QuickSortTest();
+
+
 #endif /* INNER_SORT_H_ */

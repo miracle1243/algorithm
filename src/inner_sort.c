@@ -176,7 +176,55 @@ void ShellSortTest() {
 	printf("\n");
 }
 
+int Division(int a[],int left, int right) {
+    int base=a[left];
 
+    while(left < right) {
+        while(left<right && a[right]>base)
+            --right;
+        a[left]=a[right];
+
+        while(left<right && a[left]<base )
+            ++left;
+        a[right]=a[left];
+    }
+
+    a[left]=base;
+    return left;
+}
+
+void QuickSort(int a[],int left,int right) {
+    int i,j;
+
+    if(left<right) {
+        i=Division(a,left,right);
+        QuickSort(a,left,i-1);
+        QuickSort(a,i+1,right);
+    }
+}
+
+void QuickSortTest() {
+	int i,a[ARRAYLEN];
+	for(i=0;i<ARRAYLEN;i++)
+		a[i]=0;
+
+	if(!CreateData(a,ARRAYLEN,1,100)) {
+		printf("生成随机数不成功!\n");
+		exit(0);
+	}
+
+	printf("原数据:");
+	for(i=0;i<ARRAYLEN;i++)
+		printf("%d ",a[i]);
+	printf("\n");
+
+	QuickSort(a,0,ARRAYLEN-1);
+
+	printf("排序后:");
+	for(i=0;i<ARRAYLEN;i++)
+		printf("%d ",a[i]);
+	printf("\n");
+}
 
 
 

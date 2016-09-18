@@ -138,7 +138,12 @@ int main(void) {
 	/**
 	 * 希尔排序例子
 	 */
-	ShellSortTest();
+	//ShellSortTest();
+
+	/**
+	 * 快速排序例子
+	 */
+	QuickSortTest();
 
 	return EXIT_SUCCESS;
 }
