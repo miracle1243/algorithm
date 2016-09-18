@@ -42,5 +42,11 @@ void MergeSort(int start, int end);
 
 void MergeSortTest();
 
+void HeapAdjust(int a[],int s,int n);
+
+void HeapSort(int a[],int n);
+
+void HeapSortTest();
+
 
 #endif /* INNER_SORT_H_ */

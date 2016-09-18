@@ -148,7 +148,12 @@ int main(void) {
 	/**
 	 * 归并排序例子
 	 */
-	MergeSortTest();
+	//MergeSortTest();
+
+	/**
+	 * 堆排序例子
+	 */
+	HeapSortTest();
 
 	return EXIT_SUCCESS;
 }

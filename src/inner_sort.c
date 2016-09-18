@@ -273,8 +273,62 @@ void MergeSortTest() {
 	MergeSort(0, LEN-1);
 }
 
+void HeapAdjust(int a[],int s,int n) {
+    int j,t;
 
+    while(2*s+1<n) {
+        j=2*s+1 ;
 
+        if((j+1)<n) {
+            if(a[j]<a[j+1])
+                j++;
+        }
+        if(a[s]<a[j]) {
+            t=a[s];
+            a[s]=a[j];
+            a[j]=t;
+            s=j ;
+        } else
+            break;
+    }
+}
+
+void HeapSort(int a[],int n) {
+    int t,i;
+    int j;
+    for(i=n/2-1;i>=0;i--)
+        HeapAdjust(a, i, n);
+
+    for(i=n-1;i>0;i--) {
+        t=a[0];
+        a[0] =a[i];
+        a[i] =t;
+        HeapAdjust(a,0,i);
+    }
+}
+
+void HeapSortTest() {
+	int i,a[ARRAYLEN];
+	for(i=0;i<ARRAYLEN;i++)
+		a[i]=0;
+
+	if(!CreateData(a,ARRAYLEN,1,100)) {
+		printf("生成随机数不成功!\n");
+		exit(0);
+	}
+
+	printf("原数据:");
+	for(i=0;i<ARRAYLEN;i++)
+		printf("%d ",a[i]);
+	printf("\n");
+
+	HeapSort(a,ARRAYLEN);
+
+	printf("排序后:");
+	for(i=0;i<ARRAYLEN;i++)
+		printf("%d ",a[i]);
+	printf("\n");
+}
 
 
 
