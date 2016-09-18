@@ -12,6 +12,7 @@
 #define INNER_SORT_H_
 
 #define ARRAYLEN 10
+#define LEN 8
 
 int CreateData(int arr[],int n,int min,int max);
 
@@ -34,6 +35,12 @@ int Division(int a[],int left, int right);
 void QuickSort(int a[],int left,int right);
 
 void QuickSortTest();
+
+void merge(int start, int mid, int end);
+
+void MergeSort(int start, int end);
+
+void MergeSortTest();
 
 
 #endif /* INNER_SORT_H_ */

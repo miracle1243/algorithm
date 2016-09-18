@@ -143,7 +143,12 @@ int main(void) {
 	/**
 	 * 快速排序例子
 	 */
-	QuickSortTest();
+	//QuickSortTest();
+
+	/**
+	 * 归并排序例子
+	 */
+	MergeSortTest();
 
 	return EXIT_SUCCESS;
 }

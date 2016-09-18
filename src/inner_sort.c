@@ -12,6 +12,8 @@
 #include <stdlib.h>
 #include "inner_sort.h"
 
+int aa[LEN] = { 5, 2, 4, 7, 1, 3, 2, 6 };
+
 int CreateData(int arr[],int n,int min,int max) {
     int i,j,flag;
     srand(time(NULL));
@@ -226,6 +228,50 @@ void QuickSortTest() {
 	printf("\n");
 }
 
+void merge(int start, int mid, int end) {
+	int n1 = mid - start + 1;
+	int n2 = end - mid;
+	int left[n1], right[n2];
+	int i, j, k;
+
+	for (i = 0; i < n1; i++)
+		left[i] = aa[start+i];
+	for (j = 0; j < n2; j++)
+		right[j] = aa[mid+1+j];
+
+	i = j = 0;
+	k = start;
+	while (i < n1 && j < n2)
+		if (left[i] < right[j])
+			aa[k++] = left[i++];
+		else
+			aa[k++] = right[j++];
+
+	while (i < n1)
+		aa[k++] = left[i++];
+	while (j < n2)
+		aa[k++] = right[j++];
+}
+
+void MergeSort(int start, int end) {
+	int mid;
+	if (start < end) {
+		mid = (start + end) / 2;
+		printf("sort (%d-%d, %d-%d) %d %d %d %d %d %d %d %d\n",
+			   start, mid, mid+1, end,
+			   aa[0], aa[1], aa[2], aa[3], aa[4], aa[5], aa[6], aa[7]);
+		MergeSort(start, mid);
+		MergeSort(mid+1, end);
+		merge(start, mid, end);
+		printf("merge (%d-%d, %d-%d) to %d %d %d %d %d %d %d %d\n",
+			   start, mid, mid+1, end,
+			   aa[0], aa[1], aa[2], aa[3], aa[4], aa[5], aa[6], aa[7]);
+	}
+}
+
+void MergeSortTest() {
+	MergeSort(0, LEN-1);
+}
 
 
 
