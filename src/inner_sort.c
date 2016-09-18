@@ -98,11 +98,83 @@ void BubbleSortTest() {
 	printf("\n");
 }
 
+void SelectSort(int a[],int n) {
+    int i,j,t,k;
+    for(i=0;i<n-1;i++){
+		k=i;
+		for(j=i+1;j<n;j++)
+			if(a[k]>a[j]) k=j;
+		t=a[i];
+		a[i]=a[k];
+		a[k]=t;
+    }
+}
 
+void SelectSortTest() {
+	int i,a[ARRAYLEN];
 
+	for(i=0;i<ARRAYLEN;i++)
+		a[i]=0;
 
+	if(!CreateData(a,ARRAYLEN,1,100))  {
+		printf("生成随机数不成功!\n");
+		exit(0);
+	}
 
+	printf("原数据:");
+	for(i=0;i<ARRAYLEN;i++)
+		printf("%d ",a[i]);
+	printf("\n");
 
+	SelectSort(a,ARRAYLEN);
+
+	printf("排序后:");
+	for(i=0;i<ARRAYLEN;i++)
+		printf("%d ",a[i]);
+	printf("\n");
+}
+
+void ShellSort(int a[],int n) {
+    int d,i,j,x;
+    d=n/2;
+
+    while(d>=1) {
+		for(i=d;i<n;i++) {
+			x=a[i];
+			j=i-d;
+
+			while(j>=0 && a[j]>x) {
+				a[j+d]=a[j];
+				j=j-d;
+			}
+			a[j+d]=x;
+		}
+		d/=2;
+    }
+}
+
+void ShellSortTest() {
+	int i,a[ARRAYLEN];
+	for(i=0;i<ARRAYLEN;i++)
+		a[i]=0;
+
+	if(!CreateData(a,ARRAYLEN,1,100)) {
+		printf("生成随机数不成功!\n");
+		exit(0);
+	}
+
+	printf("原数据:");
+	for(i=0;i<ARRAYLEN;i++)
+		printf("%d ",a[i]);
+	printf("\n");
+
+	ShellSort(a,ARRAYLEN);
+
+	printf("排序后:");
+	for(i=0;i<ARRAYLEN;i++)
+		printf("%d ",a[i]);
+	printf("\n");
+}
 
 
 

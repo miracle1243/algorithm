@@ -128,7 +128,17 @@ int main(void) {
 	/**
 	 * 冒泡排序例子
 	 */
-	BubbleSortTest();
+	//BubbleSortTest();
+
+	/**
+	 * 选择排序例子
+	 */
+	//SelectSortTest();
+
+	/**
+	 * 希尔排序例子
+	 */
+	ShellSortTest();
 
 	return EXIT_SUCCESS;
 }

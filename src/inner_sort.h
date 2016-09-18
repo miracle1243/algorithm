@@ -11,7 +11,7 @@
 #ifndef INNER_SORT_H_
 #define INNER_SORT_H_
 
-#define ARRAYLEN 6
+#define ARRAYLEN 10
 
 int CreateData(int arr[],int n,int min,int max);
 
@@ -20,5 +20,13 @@ void BubbleSort(int a[],int n);
 void BubbleSort1(int a[],int n);
 
 void BubbleSortTest();
+
+void SelectSort(int a[],int n);
+
+void SelectSortTest();
+
+void ShellSort(int a[],int n);
+
+void ShellSortTest();
 
 #endif /* INNER_SORT_H_ */
